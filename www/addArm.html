@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="jquery/dist/jquery.js"></script>
+
+    <script src="cordova.js"></script>
+
+    <script src="js/app.js"></script>
+</head>
+<body ng-app="starter">
+
+<ion-pane>
+
+    <ion-header-bar class="bar-stable">
+        <h1 class="title">Ajout d'une arme</h1>
+    </ion-header-bar>
+    <ion-content>
+
+        <div class="row" style="margin-top:15px;">
+            <button class="button button-positive" style="width:95%" onclick="goToUserInfo()">
+                Retour
+            </button>
+        </div>
+        <div class="row" style="margin-top:15px;">
+            <button class="button button-positive" style="width:95%" onclick="insertArm()">
+                Ajouter
+            </button>
+        </div>
+        <div class="center">
+            <br><br>
+            <div clss="list" id="list">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Nom de l'arme</span>
+                    <input id="libelle_arme" type="text" placeholder="Glock">
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Catégorie de l'arme</span>
+                    <select id="cat_arme">
+                        <option value="Arme de poing">Arme de poing</option>
+                        <option value="Fusil">Fusil</option>
+                        <option value="Fusil">Fusil</option>
+                        <option value="Fusil">Fusil</option>
+                    </select>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Photo de l'arme</span>
+                    <input id="img_arme" type="text" placeholder="image">
+                </label>
+            </div>
+
+        </div>
+    </ion-content>
+</ion-pane>
+
+</body>
+</html>
+
+<script type="text/javascript">
+
+    id = document.location.search;
+    parsId = document.location.search.slice(-1);
+
+    var idUser = parsId;
+
+    function goToUserInfo() {
+        window.location.href = "user.html?id=" + idUser;
+    }
+
+    function insertArm() {
+
+
+        libelle = document.getElementById("libelle_arme").value;
+        cat = document.getElementById("cat_arme").value;
+        img = document.getElementById("img_arme").value;
+
+        xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.open("GET", "http://www.julien-delquignies.fr/insertArm.php?id="+ idUser + "&libelle=" + libelle + "&cat=" + cat + "&img=" + img, true);
+        xmlhttp.send();
+
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                if (this.status === 200) {
+                    window.location.href = "user.html" + idUser;
+                }
+            }
+        }
+    }
+</script>

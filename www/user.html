@@ -16,55 +16,96 @@
 <body ng-app="starter">
 
 
+<script language="javascript" type="text/javascript">
+
+    id = document.location.search;
+    parsId = document.location.search.slice(-1);
+    var idUser = parsId;
+    var firstNameUser;
+    var nameUser;
+    var mailUser;
+    var telUser;
+    var imgUser;
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "http://www.julien-delquignies.fr/user.php?id=" + parsId, true);
+    xmlhttp.send();
+
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState === 4) {
+            if (this.status === 200) {
+                var jsonData = JSON.parse(xmlhttp.response);
+                $.each(jsonData, function () {
+                    firstNameUser = this['prenom_user'];
+                    nameUser = this['nom_user'];
+                    mailUser = this['mail_user'];
+                    telUser = this['tel_user'];
+                    imgUser = this['img_user'];
+                });
+            }
+        }
+
+        $("#prenom").text(firstNameUser);
+        $("#nom").text(nameUser);
+        $("#mail").text(mailUser);
+        $("#tel").text(telUser);
+
+
+        if (imgUser != "") {
+            document.getElementById('img_user').innerHTML = '<img src="' + imgUser + '" style="width: 75%;">';
+        } else {
+            document.getElementById('img_user').innerHTML = '<img src="lib/terrorist.png" style="width: 75%;">';
+        }
+    }
+
+    function goToModifInfo() {
+        window.location.href = "modifInfo.html?id=" + idUser;
+    }
+    function goToLicence() {
+        window.location.href = "licence.html?id=" + idUser;
+    }
+    function goToListArm() {
+        window.location.href = "listArm.html?id=" + idUser;
+    }
+    function goToListMun() {
+        window.location.href = "listMun.html?id=" + idUser;
+    }
+</script>
 
 
 <ion-pane>
 
     <ion-header-bar class="bar-stable">
-        <h1 class="title">Consultation offres</h1>
+        <h1 class="title">Vos informations</h1>
     </ion-header-bar>
 
-
     <ion-content>
-            <div id="listOffre" class="list">
+        <div class="row" style="margin-top:50px;">
+            <div id='img_user' class="col col-50 center">
             </div>
+            <div class="col-50">
+                <p class="info_user" id="prenom"></p>
+                <p class="info_user" id="nom"></p>
+                <p class="info_user" id="mail"></p>
+                <p class="info_user" id="tel"></p>
+            </div>
+        </div>
+        <div class="row button-center">
+            <button class="button button-positive" style="width:60%" onclick="goToModifInfo()" >Modifier mes informations</button>
+        </div>
+        <div class="row button-center">
+            <button class="button button-positive" style="width:60%" onclick="goToLicence()">Ma licence</button>
+        </div>
+        <div class="row button-center">
+            <button class="button button-positive" style="width:60%" onclick="goToListArm()">Mes armes</button>
+        </div>
+        <div class="row button-center">
+            <button class="button button-positive" style="width:60%" onclick="goToListMun()">Mes munitions</button>
+        </div>
     </ion-content>
 
-    <ion-footer>
-        <div class="tabs tabs-icon-only">
-            <a href="index.html" class="tab-item">
-                <i class="icon ion-home"></i>
-            </a>
-            <a href="userInfo.html" class="tab-item">
-                <i class="icon ion-person"></i>
-            </a>
-            <a href="map.html" class="tab-item">
-                <i class="icon ion-ios-location"></i>
-            </a>
-            <a href="../index.html" class="tab-item">
-                <i class="icon ion-power"></i>
-            </a>
-        </div>
-    </ion-footer>
 </ion-pane>
 
 </body>
 </html>
 
 
-
-<script language = "javascript" type = "text/javascript">
-        xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("listOffre").innerHTML = this.responseText;
-            }
-        };
-
-
-        id = document.location.search;
-        parsId = document.location.search.slice(-1);
-
-        xmlhttp.open("GET","http://www.julien-delquignies.fr/user.php?id=" + parsId ,true);
-        xmlhttp.send();
-</script>

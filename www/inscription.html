@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
@@ -15,131 +15,86 @@
     <script src="cordova.js"></script>
 
     <script src="js/app.js"></script>
-  </head>
-  <body ng-app="starter">
+</head>
+<body ng-app="starter">
 
-    <ion-pane>
-      <ion-content>
+<ion-pane>
+    <ion-content>
         <div class="center">
-          <h2 style="margin-left: auto; margin-right: auto; margin-top: 10%;">Inscription</h2>
+            <h2 style="margin-left: auto; margin-right: auto; margin-top: 10%;">Inscription</h2>
         </div>
-          <br><br>
+        <br><br>
 
-          <div class="item item-toggle">
-            <label id="StagiaireOuEntreprise" class="StagiaireOuEntreprise">Stagiaire</label>
-            <label class="toggle" >
-            <input type="checkbox" id="checkboxStagiaireOuEntreprise" checked="checked" onclick="estStagiaireOuEntreprise(this)">
-              <div class="track">
-                <div class="handle"></div>
-              </div>
-            </label>
-          </div>
-
-        <!-- Partie stagiaire -->
         <div class="center">
-          <br><br>
-        <div clss="list" id="listStagiaire">
-          <label class="item item-input item-stacked-label">
-            <span class="input-label">Prénom</span>
-            <input id="name_user" type="text" placeholder="John">
-          </label>
-          <label class="item item-input item-stacked-label">
-            <span class="input-label">Nom</span>
-            <input id="lastname_user" type="text" placeholder="Suhr">
-          </label>
-          <label class="item item-input item-stacked-label">
-            <span class="input-label">Email</span>
-            <input id="mail_user"  type="text" placeholder="john@suhr.com">
-          </label>
-          <label class="item item-input item-stacked-label">
-            <span class="input-label">Tél</span>
-            <input id="tel_user"  type="text" placeholder="john@suhr.com">
-          </label>
-          <label class="item item-input item-stacked-label">
-            <span class="input-label">Adresse</span>
-            <input id="adress_user"  type="text" placeholder="21 Rue de la Doua">
-          </label>
+            <br><br>
+            <div clss="list" id="list">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Prénom</span>
+                    <input id="name_user" type="text" placeholder="John">
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Nom</span>
+                    <input id="lastname_user" type="text" placeholder="Suhr">
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Email</span>
+                    <input id="mail_user" type="text" placeholder="john@suhr.com">
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Tél</span>
+                    <input id="tel_user" type="text" placeholder="0000000000">
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Adresse</span>
+                    <input id="adr_user" type="text" placeholder="21 Rue de la Doua 69110 Villeurbanne">
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Mot de passe</span>
+                    <input id="mdp_user" type="password" placeholder="********">
+                </label>
+            </div>
+
+            <button class="button button-positive" onclick="insertUser()">
+                S'inscrire
+            </button>
         </div>
+    </ion-content>
+</ion-pane>
 
-
-
-          <!-- Partie Entreprise -->
-        <div clss="list" id="listEntreprise" style="display: none">
-          <label class="item item-input item-stacked-label">
-            <span class="input-label">Nom</span>
-            <input type="text" placeholder="Entreprise">
-          </label>
-          <label class="item item-input item-stacked-label">
-            <span class="input-label">Adresse</span>
-            <input type="text" placeholder="15 rue de la paix">
-          </label>
-          <label class="item item-input item-stacked-label">
-            <span class="input-label">Email</span>
-            <input type="text" placeholder="Entreprise@paix.com">
-          </label>
-          <label class="item item-input item-stacked-label">
-            <span class="input-label">Tel</span>
-            <input type="text" placeholder="04.72.32.30.17">
-          </label>
-        </div>
-          <input id="trainee" type="hidden">
-
-        <button class="button button-positive" onclick="insertUser()">
-          S'inscrire
-        </button>
-        </div>
-      </ion-content>
-    </ion-pane>
-
-    <ion-footer>
-      <div class="tabs tabs-icon-only">
+<ion-footer>
+    <div class="tabs tabs-icon-only">
         <a href="index.html" class="tab-item">
-          <i class="icon ion-home"></i>
+            <i class="icon ion-home"></i>
         </a>
         <a href="configuration.html" class="tab-item">
-          <i class="icon ion-gear-a"></i>
+            <i class="icon ion-gear-a"></i>
         </a>
-      </div>
-    </ion-footer>
-  </body>
+    </div>
+</ion-footer>
+</body>
 </html>
 
 <script type="text/javascript">
-  function estStagiaireOuEntreprise (t) {
-    if (document.getElementById("checkboxStagiaireOuEntreprise").checked == true) {
-      document.getElementById("StagiaireOuEntreprise").innerHTML = "Stagiaire";
-      document.getElementById("listEntreprise").style.display = "none";
-      document.getElementById("listStagiaire").style.display = "block";
-      document.getElementById("trainee").setAttribute('value', 1);
 
-    } else {
-      document.getElementById("StagiaireOuEntreprise").innerHTML = "Entreprise";
-      document.getElementById("listStagiaire").style.display = "none";
-      document.getElementById("listEntreprise").style.display = "block";
-      document.getElementById("trainee").setAttribute('value', 0);
+    function insertUser() {
+        prenom = document.getElementById("name_user").value;
+        nom = document.getElementById("lastname_user").value;
+        mail = document.getElementById("mail_user").value;
+        tel = document.getElementById("tel_user").value;
+        adr = document.getElementById("adr_user").value;
+        mdp = document.getElementById("mdp_user").value;
+
+        xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.open("GET", "http://www.julien-delquignies.fr/inscription.php?prenom=" + prenom + "&nom=" + nom + "&mail=" + mail + "&tel=" + tel + "&adr=" + adr + "&mdp=" + mdp, true);
+        xmlhttp.send();
+
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                if (this.status === 200) {
+                    window.location.href = "index.html";
+                }
+            }
+        }
     }
-  }
-
-  function insertUser() {
-    login = document.getElementById("mail_user").value;
-    mdp = document.getElementById("mdp_user").value;
-    xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("loginOk").innerHTML = this.responseText;
-      }
-    };
-    xmlhttp.open("GET","http://www.julien-delquignies.fr/inscriptionStagiaire.php?prenom="+prenom+"&nom="+nom+"&mail="+mail+"&tel="+tel,true);
-    xmlhttp.send();
-
-    idUser = document.getElementById("isLoginOk").value;
-    isTrainee = document.getElementById("isTrainee").value;
-    if ((idUser != 0) & (isTrainee == 1)) {
-      window.location.href = "stagiaire/index.html?id" + idUser;
-    }
-    if ((idUser != 0) & (isTrainee == 0)) {
-      window.location.href = "entreprise/index.html?id" + idUser;
-    }
-  }
-
 </script>

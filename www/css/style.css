@@ -3,6 +3,10 @@
 .center {
     text-align:center;
 }
+.button-center{
+    text-align:center;
+    margin-top: 10px!important;
+}
 
 .pane {
     /*background-color: lightgray;*/
