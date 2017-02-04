@@ -53,17 +53,13 @@
 
                 xmlhttp.open("GET", "http://www.julien-delquignies.fr/connexion.php?login=" + login + "&mdp=" + mdp, true);
                 xmlhttp.send();
-
                 xmlhttp.onreadystatechange = function () {
-                    if (this.readyState === 4) {
-                        if (this.status === 200) {
-                            idUser = (this.responseText);
-                            if (idUser != "") {
-                                window.location.href = "user.html?id=" + idUser;
-                            }
-                            else {
-                                alert('Erreur de saisie');
-                            }
+                    if (this.readyState == 4 && this.status == 200) {
+                        idUser = (this.responseText);
+                        if (idUser != "") {
+                            window.location.href = "user.html?id=" + idUser;
+                        } else {
+                            alert("Erreur de saisie")
                         }
                     }
                 }
@@ -79,13 +75,6 @@
     </ion-content>
 </ion-pane>
 
-<ion-footer>
-    <div class="tabs tabs-icon-only">
-        <a href="configuration.html" class="tab-item">
-            <i class="icon ion-gear-a"></i>
-        </a>
-    </div>
-</ion-footer>
 </body>
 </html>
 

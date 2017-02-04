@@ -1,0 +1,13 @@
+/* Empty. Add your own CSS if you like */
+
+.center {
+    text-align:center;
+}
+.button-center{
+    text-align:center;
+    margin-top: 10px!important;
+}
+
+.pane {
+    /*background-color: lightgray;*/
+}
