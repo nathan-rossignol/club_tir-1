@@ -11,3 +11,7 @@
 .pane {
     /*background-color: lightgray;*/
 }
+
+button {
+    font-size: 14px !important;
+}

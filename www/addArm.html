@@ -22,16 +22,17 @@
         <h1 class="title">Ajout d'une arme</h1>
     </ion-header-bar>
     <ion-content>
-
-        <div class="row" style="margin-top:15px;">
-            <button class="button button-positive" style="width:95%" onclick="goToUserInfo()">
+        <div class="center">
+        <div class="col-xs-6 text-left" style="width:45%; display: inline-block; margin-top:15px;">
+            <button class="button button-positive" style="width:100%" onclick="goToUserInfo()">
                 Retour
             </button>
         </div>
-        <div class="row" style="margin-top:15px;">
-            <button class="button button-positive" style="width:95%" onclick="insertArm()">
+        <div class="col-xs-6 text-right" style="width:45%; display: inline-block; margin-top:15px;">
+            <button class="button button-positive" style="width:100%" onclick="insertArm()">
                 Ajouter
             </button>
+        </div>
         </div>
         <div class="center">
             <br><br>
@@ -41,7 +42,7 @@
                     <input id="libelle_arme" type="text" placeholder="Glock">
                 </label>
                 <label class="item item-input item-stacked-label">
-                    <span class="input-label">Catégorie de l'arme</span>
+                    <span class="input-label">Catégorie de l'arme</span><br>
                     <select id="cat_arme">
                         <option value="Arme de poing">Arme de poing</option>
                         <option value="Fusil">Fusil</option>
